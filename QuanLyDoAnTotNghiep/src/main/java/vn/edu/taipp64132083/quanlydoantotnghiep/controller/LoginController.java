@@ -20,13 +20,13 @@ public class LoginController {
 
     @FXML
     public void initialize() {
-//        // Load nội dung trang Home mặc định
+        // Load nội dung trang Home mặc định
 //        loadPage("login-view.fxml");
-//
-//        // Gắn sự kiện cho các nút
+
+        // Gắn sự kiện cho các nút
 //        home.setOnAction(event -> loadPage("Home.fxml"));
-//        page01.setOnAction(event -> loadPage("Page01.fxml"));
-//        page02.setOnAction(event -> loadPage("Page02.fxml"));
+        page01.setOnAction(event -> loadPage("Page01.fxml"));
+        page02.setOnAction(event -> loadPage("Page02.fxml"));
     }
 
     private void loadPage(String fxmlFile) {
