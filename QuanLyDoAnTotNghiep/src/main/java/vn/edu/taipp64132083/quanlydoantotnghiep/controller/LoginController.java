@@ -1,43 +1,41 @@
 package vn.edu.taipp64132083.quanlydoantotnghiep.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import vn.edu.taipp64132083.quanlydoantotnghiep.MainApplication;
 
 import java.io.IOException;
 
 public class LoginController {
-    @FXML
-    private StackPane contentPane;
-    @FXML
-    private Button home;
-    @FXML
-    private Button page01;
-    @FXML
-    private Button page02;
 
     @FXML
-    public void initialize() {
-        // Load nội dung trang Home mặc định
-//        loadPage("login-view.fxml");
-
-        // Gắn sự kiện cho các nút
-//        home.setOnAction(event -> loadPage("Home.fxml"));
-        page01.setOnAction(event -> loadPage("Page01.fxml"));
-        page02.setOnAction(event -> loadPage("Page02.fxml"));
-    }
-
-    private void loadPage(String fxmlFile) {
+    private void switchRegister(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("register-view.fxml"));
         try {
-            // Load FXML của trang mới
-            Node newPage = FXMLLoader.load(getClass().getResource(fxmlFile));
-            // Xóa nội dung cũ và thêm trang mới vào contentPane
-            contentPane.getChildren().clear();
-            contentPane.getChildren().add(newPage);
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
+
+    @FXML
+    private void onLogin(ActionEvent event){
+
+    }
+
 }
