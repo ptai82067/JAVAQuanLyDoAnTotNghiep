@@ -26,20 +26,20 @@ public class MainApplication extends Application {
     public static void main(String[] args) {
         try {
 
-            PhanCongDoAnRequest request = new PhanCongDoAnRequest(4,3,1,"2024-09-01 08:00:00","Chia sẻ tài liệu lần 2");
+            BinhLuanRequest request = new BinhLuanRequest(1,"hihi haha","2024-1-1");
 
 //            System.out.println("Dữ liệu gửi lên API: " + new Gson().toJson(l1));
 
-//            request = APIClient.post("PhanCongDoAn", request);
+//            request = APIClient.post("BinhLuan", request);
 
 //            Khoa k1 = new Khoa("Cơ khí");
 //            Khoa khoa = APIClient.post("Khoa", k1);
 //            Khoa k1 = new Khoa("");
 //            Khoa khoa = APIClient.delete("Khoa/5", k1);
             // Tạo một API client cho đối tượng User
-            List<HoSoBaoVe> lop = APIClient.get("HoSoBaoVe", HoSoBaoVe.class);
+            List<RolePermission> lop = APIClient.get("RolePermissions", RolePermission.class);
             // In thông tin các người dùng
-            for (HoSoBaoVe khoa : lop) {
+            for (RolePermission khoa : lop) {
                 System.out.println(khoa.toString());
                 System.out.println("-----");
             }
