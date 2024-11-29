@@ -26,27 +26,20 @@ public class MainApplication extends Application {
     public static void main(String[] args) {
         try {
 
-            NoiDungThucHienRequest request = new NoiDungThucHienRequest(
-                    "Lập trình ứng dụng Java", // Mô tả
-                    "http://example.com/mau-nguon", // Link mẫu nguồn
-                    1, // Tình trạng (1: Đang thực hiện)
-                    "2024-10-5", // Thời gian thực hiện
-                    "file_tao_ra.java", // File tạo ra
-                    "Ghi chú về công việc", // Ghi chú
-                    3 // SinhVienID
-            );
+            PhanCongDoAnRequest request = new PhanCongDoAnRequest(4,3,1,"2024-09-01 08:00:00","Chia sẻ tài liệu lần 2");
+
 //            System.out.println("Dữ liệu gửi lên API: " + new Gson().toJson(l1));
 
-            request = APIClient.post("NoiDungThucHien", request);
+            request = APIClient.post("PhanCongDoAn", request);
 
 //            Khoa k1 = new Khoa("Cơ khí");
 //            Khoa khoa = APIClient.post("Khoa", k1);
 //            Khoa k1 = new Khoa("");
 //            Khoa khoa = APIClient.delete("Khoa/5", k1);
             // Tạo một API client cho đối tượng User
-            List<NoiDungThucHien> lop = APIClient.get("NoiDungThucHien", NoiDungThucHien.class);
+            List<PhanCongDoAn> lop = APIClient.get("PhanCongDoAn", PhanCongDoAn.class);
             // In thông tin các người dùng
-            for (NoiDungThucHien khoa : lop) {
+            for (PhanCongDoAn khoa : lop) {
                 System.out.println(khoa.toString());
                 System.out.println("-----");
             }
