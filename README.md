@@ -1,5 +1,3 @@
-
-"### Link Backend" https://github.com/ptai82067/quanlyduan
 # Quản Lý Đồ Án Tốt Nghiệp
 Xây dựng một phần mền quản lý đồ án tốt nghiệp cho trường Đại Học Nha Trang.
 ## Backend https://github.com/ptai82067/quanlyduan
