@@ -30,16 +30,16 @@ public class MainApplication extends Application {
 
 //            System.out.println("Dữ liệu gửi lên API: " + new Gson().toJson(l1));
 
-            request = APIClient.post("PhanCongDoAn", request);
+//            request = APIClient.post("PhanCongDoAn", request);
 
 //            Khoa k1 = new Khoa("Cơ khí");
 //            Khoa khoa = APIClient.post("Khoa", k1);
 //            Khoa k1 = new Khoa("");
 //            Khoa khoa = APIClient.delete("Khoa/5", k1);
             // Tạo một API client cho đối tượng User
-            List<PhanCongDoAn> lop = APIClient.get("PhanCongDoAn", PhanCongDoAn.class);
+            List<HoSoBaoVe> lop = APIClient.get("HoSoBaoVe", HoSoBaoVe.class);
             // In thông tin các người dùng
-            for (PhanCongDoAn khoa : lop) {
+            for (HoSoBaoVe khoa : lop) {
                 System.out.println(khoa.toString());
                 System.out.println("-----");
             }
