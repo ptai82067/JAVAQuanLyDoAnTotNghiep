@@ -5,9 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.Khoa;
-import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.Lop;
-import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.LopRequest;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.*;
 import vn.edu.taipp64132083.quanlydoantotnghiep.utils.APIClient;
 
 import java.io.IOException;
@@ -28,24 +26,28 @@ public class MainApplication extends Application {
     public static void main(String[] args) {
         try {
 
-            Khoa k1 = APIClient.show("Khoa/1", Khoa.class);
-//
-            LopRequest l1 = new LopRequest("64CNTT-CLC1",k1.getMaKhoa());
+            NoiDungThucHienRequest request = new NoiDungThucHienRequest(
+                    "Lập trình ứng dụng Java", // Mô tả
+                    "http://example.com/mau-nguon", // Link mẫu nguồn
+                    1, // Tình trạng (1: Đang thực hiện)
+                    "2024-10-5", // Thời gian thực hiện
+                    "file_tao_ra.java", // File tạo ra
+                    "Ghi chú về công việc", // Ghi chú
+                    3 // SinhVienID
+            );
 //            System.out.println("Dữ liệu gửi lên API: " + new Gson().toJson(l1));
 
-            l1 = APIClient.post("Lop", l1);
+            request = APIClient.post("NoiDungThucHien", request);
 
 //            Khoa k1 = new Khoa("Cơ khí");
 //            Khoa khoa = APIClient.post("Khoa", k1);
 //            Khoa k1 = new Khoa("");
 //            Khoa khoa = APIClient.delete("Khoa/5", k1);
             // Tạo một API client cho đối tượng User
-            List<Lop> lop = APIClient.get("Lop", Lop.class);
+            List<NoiDungThucHien> lop = APIClient.get("NoiDungThucHien", NoiDungThucHien.class);
             // In thông tin các người dùng
-            for (Lop khoa : lop) {
-                System.out.println("Mã Lớp: " + khoa.getMaLop());
-                System.out.println("Tên Lớp: " + khoa.getTenLop());
-                System.out.println("Khoa: " + khoa.getKhoa().getTenKhoa());
+            for (NoiDungThucHien khoa : lop) {
+                System.out.println(khoa.toString());
                 System.out.println("-----");
             }
 //            Lop khoa = APIClient.show("Lop/1", Lop.class);

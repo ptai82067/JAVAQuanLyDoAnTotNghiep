@@ -1,6 +1,6 @@
 package vn.edu.taipp64132083.quanlydoantotnghiep.model_dto;
 
-public class Lop {
+public class Lop implements Identifiable {
   private int MaLop;
   private String TenLop;
   private Khoa khoa;
@@ -33,5 +33,10 @@ public class Lop {
 
   public void setTenLop(String tenLop) {
     TenLop = tenLop;
+  }
+
+  @Override
+  public int getId() {
+    return this.MaLop;
   }
 }

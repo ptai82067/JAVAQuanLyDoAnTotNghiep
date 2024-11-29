@@ -10,8 +10,8 @@ import java.net.http.HttpResponse;
 import java.util.List;
 
 public class APIClient {
-//  private static final String BASE_URL = "http://localhost:8000/api/";
-  private static final String BASE_URL = "https://quanlyduan-production.up.railway.app/api/"; // URL gốc của API
+  private static final String BASE_URL = "http://localhost:8000/api/";
+//  private static final String BASE_URL = "https://quanlyduan-production.up.railway.app/api/"; // URL gốc của API
   private static final Gson gson = new Gson();
   private static final HttpClient client = HttpClient.newHttpClient();
 

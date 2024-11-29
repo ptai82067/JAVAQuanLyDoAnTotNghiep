@@ -1,8 +1,7 @@
 package vn.edu.taipp64132083.quanlydoantotnghiep.model_dto;
 
-public class Khoa {
+public class Khoa implements Identifiable {
   private int MaKhoa;
-
   private String TenKhoa;
 
   public Khoa(String tenKhoa) {
@@ -23,5 +22,10 @@ public class Khoa {
 
   public void setTenKhoa(String tenKhoa) {
     TenKhoa = tenKhoa;
+  }
+
+  @Override
+  public int getId() {
+    return this.MaKhoa;
   }
 }
