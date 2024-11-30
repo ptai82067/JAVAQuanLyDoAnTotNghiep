@@ -14,11 +14,10 @@ and open the template in the editor.
     -fx-background-color: gray
 }
 .bt {
-    -fx-background-color: transparent
+    -fx-background-color: #404040;
 }
 .bt:hover {
-    -fx-background-color: darkseagreen
+    -fx-background-color: #303030;
 }
 .box {
-
 }

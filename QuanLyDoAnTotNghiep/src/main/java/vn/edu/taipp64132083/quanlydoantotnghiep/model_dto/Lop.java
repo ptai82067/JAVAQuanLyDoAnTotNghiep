@@ -39,4 +39,9 @@ public class Lop implements Identifiable {
   public int getId() {
     return this.MaLop;
   }
+
+  @Override
+  public String toString() {
+    return this.getTenLop();
+  }
 }
