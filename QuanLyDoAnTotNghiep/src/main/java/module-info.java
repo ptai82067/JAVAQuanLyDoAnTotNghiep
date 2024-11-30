@@ -5,6 +5,7 @@ module vn.edu.taipp64132083.quanlydoantotnghiep {
   requires javafx.controls;
   requires java.net.http;
   requires com.google.gson;
+  requires java.logging;
 
 
   opens vn.edu.taipp64132083.quanlydoantotnghiep to javafx.fxml;

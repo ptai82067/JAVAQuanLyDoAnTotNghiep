@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import vn.edu.taipp64132083.quanlydoantotnghiep.MainApplication;
+import vn.edu.taipp64132083.quanlydoantotnghiep.MainPanel;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class RegisterController {
 
   @FXML
   private void switchLogin(MouseEvent event) throws IOException {
-    FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login-view.fxml"));
+    FXMLLoader fxmlLoader = new FXMLLoader(MainPanel.class.getResource("LoginView.fxml"));
     try {
       Parent root = fxmlLoader.load();
       Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
