@@ -17,18 +17,21 @@ public class Service {
   // Hàm lấy danh sách SinhVien từ cache hoặc API
   public ObservableList<SinhVien> getSinhVienList() throws Exception {
     // Kiểm tra nếu danh sách SinhVien đã có trong cache
-    List<SinhVien> list = (List<SinhVien>)APIDataCache.getInstance().getListFromCache(SINHVIEN_TABLE_NAME, SinhVien.class);
+    List<SinhVien> list = (List<SinhVien>)APIDataCache.getInstance()
+            .getListFromCache(SINHVIEN_TABLE_NAME, SinhVien.class);
     ObservableList<SinhVien> sinhVienList = FXCollections.observableArrayList(list);
 
     if (sinhVienList == null || sinhVienList.isEmpty()) {
       // Nếu không có trong cache, gọi API để lấy danh sách SinhVien
       System.out.println("Lấy danh sách SinhVien từ API...");
-      List<SinhVien> list1 = APIClient.get("SinhVien", SinhVien.class); // Thực hiện request API
+      // Thực hiện request API
+      List<SinhVien> list1 = APIClient.get("SinhVien", SinhVien.class);
       sinhVienList = FXCollections.observableArrayList(list1);
       // Lưu vào cache sau khi nhận được dữ liệu
       if (sinhVienList != null) {
         for (SinhVien sinhVien : sinhVienList) {
-          APIDataCache.getInstance().addInCache(SINHVIEN_TABLE_NAME, sinhVien); // Lưu vào cache
+          // Lưu vào cache
+          APIDataCache.getInstance().addInCache(SINHVIEN_TABLE_NAME, sinhVien);
         }
       }
     }
@@ -38,17 +41,18 @@ public class Service {
   // Hàm lấy danh sách DoAn từ cache hoặc API
   public ObservableList<DoAn> getDoAnList() throws Exception {
     // Kiểm tra nếu danh sách DoAn đã có trong cache
-    List<DoAn> list = (List<DoAn>)APIDataCache.getInstance().getListFromCache(DOAN_TABLE_NAME, DoAn.class);
+    List<DoAn> list = (List<DoAn>)APIDataCache.getInstance()
+            .getListFromCache(DOAN_TABLE_NAME, DoAn.class);
     ObservableList<DoAn> doAnList = FXCollections.observableArrayList(list);
     if (doAnList == null || doAnList.isEmpty()) {
       // Nếu không có trong cache, gọi API để lấy danh sách DoAn
       System.out.println("Lấy danh sách DoAn từ API...");
-      List<DoAn> list1 = APIClient.get("DoAn", DoAn.class); // Thực hiện request API
+      List<DoAn> list1 = APIClient.get("DoAn", DoAn.class);
       doAnList = FXCollections.observableArrayList(list1);
       // Lưu vào cache sau khi nhận được dữ liệu
       if (doAnList != null) {
         for (DoAn doAn : doAnList) {
-          APIDataCache.getInstance().addInCache(DOAN_TABLE_NAME, doAn); // Lưu vào cache
+          APIDataCache.getInstance().addInCache(DOAN_TABLE_NAME, doAn);
         }
       }
     }

@@ -10,8 +10,8 @@ import java.util.Map;
 public class APIDataCache {
 
   private static APIDataCache instance;
+  //Lưu trữ cache, mỗi String (tên bảng) ánh xạ đến một danh sách các đối tượng thực thi Identifiable
   private final Map<String, ObservableList<Identifiable>> cache = new HashMap<>();
-
   // Lấy instance của APIDataCache
   public static APIDataCache getInstance() {
     if (instance == null) {
@@ -20,14 +20,17 @@ public class APIDataCache {
     return instance;
   }
 
-  // Phương thức thêm mới đối tượng vào cache (không cần getId())
+  // Phương thức thêm mới danh sách (đối tượng) vào cache
   public <T extends Identifiable> void addInCache(String tableName, T newItem) {
-    ObservableList<T> list = (ObservableList<T>) cache.computeIfAbsent(tableName, k -> FXCollections.observableArrayList());
+    //Kiểm tra xem tên bảng (tableName) đã tồn tại trong cache chưa.
+    //Nếu chưa, tạo một danh sách trống (ObservableList) cho bảng.
+    ObservableList<T> list = (ObservableList<T>) cache.computeIfAbsent(tableName,k -> FXCollections.observableArrayList());
     list.add(newItem); // Thêm đối tượng mới vào danh sách
   }
 
   // Phương thức cập nhật đối tượng trong cache
   public <T extends Identifiable> void updateInCache(String tableName, T updatedItem) {
+    //Lấy danh sách từ cache dựa trên tableName.
     ObservableList<T> list = (ObservableList<T>) cache.get(tableName);
     if (list != null) {
       for (int i = 0; i < list.size(); i++) {
@@ -58,7 +61,6 @@ public class APIDataCache {
     }
   }
 
-  // Hàm lấy danh sách từ cache theo tên bảng
   // Hàm lấy danh sách từ cache theo tên bảng và kiểu của đối tượng
   public <T extends Identifiable> ObservableList<T> getListFromCache(String tableName, Class<T> type) {
     ObservableList<Identifiable> list = cache.get(tableName);
