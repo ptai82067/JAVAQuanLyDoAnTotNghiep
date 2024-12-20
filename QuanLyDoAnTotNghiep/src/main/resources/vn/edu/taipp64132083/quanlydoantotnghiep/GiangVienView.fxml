@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="1201.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vn.edu.taipp64132083.quanlydoantotnghiep.controller.DoAnController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="1201.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vn.edu.taipp64132083.quanlydoantotnghiep.controller.GiangVienController">
     <children>
         <Pane prefHeight="139.0" prefWidth="1201.0" style="-fx-background-color: #2D75E8;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label layoutX="73.0" layoutY="30.0" text="Danh Sách Đồ Án" textFill="WHITE">
+                <Label layoutX="73.0" layoutY="30.0" text="Danh Sách Giảng Vien" textFill="WHITE">
                     <font>
                         <Font size="48.0" />
                     </font>
@@ -24,6 +24,7 @@
                     </font>
                 </Label>
             </children>
+
         </Pane>
         <HBox layoutX="20.0" layoutY="150.0" spacing="10" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="150.0">
             <children>
@@ -33,21 +34,19 @@
                 <Button fx:id="btnDetail" text="Xem chi tiết" />
             </children>
         </HBox>
-        <TableView fx:id="doAnTable" layoutX="20.0" layoutY="192.0" prefHeight="452.0" prefWidth="1165.0" stylesheets="@asset/fullpackstyling.css" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="192.0">
+        <TableView fx:id="giangVienTable" layoutX="20.0" layoutY="192.0" prefHeight="452.0" prefWidth="1165.0" stylesheets="@asset/fullpackstyling.css" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="192.0">
             <columns>
-                <TableColumn fx:id="tenDoAn" prefWidth="75.0" text="Tên đồ án" />
-                <TableColumn fx:id="doKho" prefWidth="75.0" text="Độ khó" />
-                <TableColumn fx:id="ngayTao" prefWidth="75.0" text="Ngày tạo" />
-                <TableColumn fx:id="ngayDuyet" prefWidth="75.0" text="Ngày duyệt" />
-                <TableColumn fx:id="hanMucDK" prefWidth="75.0" text="HMDK" />
-                <TableColumn fx:id="soLuongDK" prefWidth="75.0" text="SLDK" />
-                <TableColumn fx:id="giangVienDuyet" prefWidth="75.0" text="Người duyệt" />
+                <TableColumn fx:id="hoTen" prefWidth="75.0" text="Họ tên" />
+                <TableColumn fx:id="email" prefWidth="75.0" text="Email" />
+                <TableColumn fx:id="SDT" prefWidth="75.0" text="SDT" />
+                <TableColumn fx:id="boMon" prefWidth="75.0" text="Bộ môn" />
+                <TableColumn fx:id="hanMucHD" prefWidth="75.0" text="Hạn mức hướng dẫn" />
+                <TableColumn fx:id="soLuongHuongDan" prefWidth="75.0" text="Số lượng hướng dẫn" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-
         <HBox alignment="CENTER" layoutX="516.0" layoutY="656.0" spacing="10">
             <Button fx:id="btnFirstPage" text="&lt;&lt;" />
             <Button fx:id="btnPrevPage" text="&lt;" />

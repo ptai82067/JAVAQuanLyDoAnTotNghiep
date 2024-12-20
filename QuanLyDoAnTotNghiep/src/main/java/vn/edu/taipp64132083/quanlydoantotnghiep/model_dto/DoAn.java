@@ -141,23 +141,6 @@ public class DoAn implements Identifiable {
 
   @Override
   public String toString() {
-    String taiLieu ="\n";
-//    for (var i: tai_lieu){
-//      taiLieu+=i.getTenTaiLieu();
-//    }
-    return "DoAn{" +
-            "MaDoAn=" + MaDoAn +
-            ", TenDoAn='" + TenDoAn + '\'' +
-            ", MoTa='" + MoTa + '\'' +
-            ", DoKho=" + DoKho +
-            ", NgayTao='" + NgayTao + '\'' +
-            ", NgayDuyet='" + NgayDuyet + '\'' +
-            ", HanMucDK=" + HanMucDK +
-            ", SoLuongDK=" + SoLuongDK +", tai_lieu=" + tai_lieu +
-            ", giang_vien_tao=" + giang_vien_tao.getHoTen() +
-            ", giang_vien_duyet=" + giang_vien_duyet.getHoTen() +
-            ", giang_vien_khoa_do_an=" + giang_vien_khoa_do_an.getHoTen() +
-            ",TaiLieu"+taiLieu+
-            '}';
+    return this.TenDoAn;
   }
 }

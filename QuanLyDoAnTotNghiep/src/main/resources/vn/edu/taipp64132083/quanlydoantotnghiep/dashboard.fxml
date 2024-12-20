@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="654.0" prefWidth="1073.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="vn.edu.taipp64132083.quanlydoantotnghiep.controller.DashboardController">
+    <!-- Navigation Menu (Left) -->
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #2e3b4e; -fx-padding: 10;">
+         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="69.0" prefWidth="137.0" text="NTU" textAlignment="CENTER" textFill="#b6e4ff">
+            <font>
+               <Font name="System Bold" size="48.0" />
+            </font>
+         </Label>
+            <Button fx:id="btnSinhVien" onAction="#showSinhVienView" prefHeight="39.0" prefWidth="136.0" style="-fx-text-fill: black;" text="Sinh Viên" />
+            <Button fx:id="btnGiangVien" onAction="#showGiangVienView" prefHeight="39.0" prefWidth="138.0" style="-fx-text-fill: black;" text="Giảng Viên" />
+            <Button fx:id="btnDoAn" onAction="#showDoAnView" prefHeight="40.0" prefWidth="139.0" style="-fx-text-fill: black;" text="Đồ Án" />
+            <Button fx:id="btnPhanCong" onAction="#showPhanCongView" prefHeight="40.0" prefWidth="139.0" style="-fx-text-fill: black;" text="Phân Công Đồ Án" />
+        </VBox>
+    </left>
+
+    <!-- Content Area (Center) -->
+    <center>
+        <StackPane fx:id="contentPane" prefHeight="77.0" prefWidth="0.0" style="-fx-padding: 10;">
+            <!-- Nội dung của các view sẽ được load tại đây -->
+        </StackPane>
+    </center>
+</BorderPane>

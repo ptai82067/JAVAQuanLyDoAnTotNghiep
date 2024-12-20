@@ -33,10 +33,8 @@ public class BoMon implements Identifiable {
 
   @Override
   public String toString() {
-    return "BoMon{" +
-            "MaBoMon=" + MaBoMon +
-            ", TenBoMon='" + TenBoMon + '\'' +
-            '}';
+    return  TenBoMon;
+
   }
 
   @Override

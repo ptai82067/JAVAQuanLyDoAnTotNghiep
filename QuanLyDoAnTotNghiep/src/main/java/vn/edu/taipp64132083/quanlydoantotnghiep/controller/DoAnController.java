@@ -1,70 +1,92 @@
 package vn.edu.taipp64132083.quanlydoantotnghiep.controller;
+
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.GiangVien;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.Lop;
-import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.SinhVien;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.DoAn;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.DoAnRequest;
+import vn.edu.taipp64132083.quanlydoantotnghiep.utils.APIClient;
 import vn.edu.taipp64132083.quanlydoantotnghiep.utils.PaginationService;
 import vn.edu.taipp64132083.quanlydoantotnghiep.utils.Service;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
 public class DoAnController implements Initializable {
+
   @FXML
-  private TableView<SinhVien> sinhVienTable;  // TableView để hiển thị danh sách sinh viên
+  private TableView<DoAn> doAnTable;  // TableView để hiển thị danh sách sinh viên
   @FXML
-  private TableColumn<SinhVien, String> hoTen, ngaySinh, email;
+  private TableColumn<DoAn, String> tenDoAn, ngayTao, ngayDuyet;
   @FXML
-  private TableColumn<SinhVien, Integer> gioiTinh;
+  private TableColumn<DoAn, Integer> doKho, hanMucDK, soLuongDK;
   @FXML
-  private TableColumn<SinhVien, Lop> lop;
+  private TableColumn<DoAn, GiangVien> giangVienDuyet;
+  @FXML
+  private Button btnAdd, btnEdit, btnDelete, btnDetail;
+
 
   @FXML
   private Button btnNextPage, btnPrevPage, btnFirstPage, btnLastPage;  // Nút phân trang
   @FXML
   private Label lblPageInfo;  // Hiển thị thông tin trang hiện tại
 
-  private ObservableList<SinhVien> allSinhVien;  // Toàn bộ danh sách sinh viên
-  private PaginationService<SinhVien> paginationService;  // Dịch vụ phân trang
+  private ObservableList<DoAn> allDoAn;  // Toàn bộ danh sách sinh viên
+  private PaginationService<DoAn> paginationService;  // Dịch vụ phân trang
 
+
+  public DoAnController()
+  {
+
+  }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    hoTen.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
-    ngaySinh.setCellValueFactory(new PropertyValueFactory<>("ngaySinh"));
-    email.setCellValueFactory(new PropertyValueFactory<>("email"));
-    gioiTinh.setCellValueFactory(new PropertyValueFactory<>("gioiTinh"));
-    lop.setCellValueFactory(new PropertyValueFactory<>("lop"));
-    // Lấy danh sách SinhVien từ cache hoặc API
+    tenDoAn.setCellValueFactory(new PropertyValueFactory<>("tenDoAn"));
+    ngayTao.setCellValueFactory(new PropertyValueFactory<>("ngayTao"));
+    ngayDuyet.setCellValueFactory(new PropertyValueFactory<>("ngayDuyet"));
+    doKho.setCellValueFactory(new PropertyValueFactory<>("doKho"));
+    hanMucDK.setCellValueFactory(new PropertyValueFactory<>("hanMucDK"));
+    soLuongDK.setCellValueFactory(new PropertyValueFactory<>("soLuongDK"));
+    giangVienDuyet.setCellValueFactory(new PropertyValueFactory<>("giang_vien_duyet"));
+
+
+    // Lấy danh sách DoAn từ cache hoặc API
     Service service = new Service();
     try {
-      allSinhVien = service.getSinhVienList();
+      allDoAn = service.getDoAnList();
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
 
-    allSinhVien.addListener((ListChangeListener<SinhVien>) change -> {
+    allDoAn.addListener((ListChangeListener<DoAn>) change -> {
       while (change.next()) {
         if (change.wasAdded()) {
           // Nếu có phần tử mới được thêm vào
-          for (SinhVien sinhVien : change.getAddedSubList()) {
+          for (DoAn doAn : change.getAddedSubList()) {
             // Cập nhật UI khi thêm sinh viên
-            System.out.println("Đã thêm sinh viên: " + sinhVien.getHoTen());
+
           }
         }
         if (change.wasRemoved()) {
           // Nếu có phần tử bị xóa
-          for (SinhVien sinhVien : change.getRemoved()) {
+          for (DoAn doAn : change.getRemoved()) {
             // Cập nhật UI khi xóa sinh viên
-            System.out.println("Đã xóa sinh viên: " + sinhVien.getHoTen());
+
           }
         }
         if (change.wasUpdated()) {
@@ -72,9 +94,14 @@ public class DoAnController implements Initializable {
           System.out.println("Đã cập nhật sinh viên.");
         }
       }});
-//    sinhVienTable.setItems(allSinhVien);
+    doAnTable.setItems(allDoAn);
+    // Xử lý sự kiện nút
+    btnAdd.setOnAction(this::handleAdd);
+    btnEdit.setOnAction(this::handleEdit);
+    btnDelete.setOnAction(this::handleDelete);
+    btnDetail.setOnAction(this::handleDetail);
     // Khởi tạo dịch vụ phân trang
-    paginationService = new PaginationService<>(allSinhVien, 3);
+    paginationService = new PaginationService<>(allDoAn, 5);
 
     // Cập nhật TableView với dữ liệu của trang đầu tiên
     updateTableView();
@@ -89,7 +116,7 @@ public class DoAnController implements Initializable {
 
   // Cập nhật dữ liệu trong TableView
   private void updateTableView() {
-    sinhVienTable.setItems(paginationService.getCurrentPageData());
+    doAnTable.setItems(paginationService.getCurrentPageData());
     lblPageInfo.setText("Trang " + (paginationService.getCurrentPage() + 1) + " / " + paginationService.getTotalPages());
   }
 
@@ -116,4 +143,129 @@ public class DoAnController implements Initializable {
     paginationService.lastPage();
     updateTableView();
   }
+
+  @FXML
+  private void handleAdd(ActionEvent event) {
+//    try {
+//      Stage stage = new Stage();
+//      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/AddDoAnView.fxml"));
+//      Parent root = fxmlLoader.load();
+//      Scene scene = new Scene(root);
+//      stage.setScene(scene);
+//      stage.setTitle("Thêm Sinh Viên");
+//      stage.showAndWait();
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
+  }
+  @FXML
+  private void handleEdit(ActionEvent event) {
+//    try {
+//      // Lấy sinh viên được chọn trong bảng
+//      DoAn selectedDoAn = doAnTable.getSelectionModel().getSelectedItem();
+//      if (selectedDoAn == null) {
+//        Alert alert = new Alert(Alert.AlertType.WARNING);
+//        alert.setTitle("Cảnh báo");
+//        alert.setHeaderText("Chưa chọn sinh viên!");
+//        alert.setContentText("Vui lòng chọn một sinh viên để chỉnh sửa.");
+//        alert.show();
+//        return;
+//      }
+//
+//      // Tải form chỉnh sửa
+//      Stage stage = new Stage();
+//      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/EditDoAnView.fxml"));
+//      Parent root = fxmlLoader.load();
+//
+//      Scene scene = new Scene(root);
+//      stage.setScene(scene);
+//
+//      // Truyền đối tượng sinh viên vào controller
+//      EditDoAnController controller = fxmlLoader.getController();
+//      controller.setDoAn(selectedDoAn);
+//
+//      stage.setTitle("Sửa Sinh Viên");
+//      stage.showAndWait();
+//
+//      // Sau khi chỉnh sửa, cập nhật lại danh sách (nếu cần)
+//      updateTableView();
+//
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
+  }
+  @FXML
+  private void handleDetail(ActionEvent event) {
+//    try {
+//      // Lấy sinh viên được chọn trong bảng
+//      DoAn selectedDoAn = doAnTable.getSelectionModel().getSelectedItem();
+//      if (selectedDoAn == null) {
+//        Alert alert = new Alert(Alert.AlertType.WARNING);
+//        alert.setTitle("Cảnh báo");
+//        alert.setHeaderText("Chưa chọn sinh viên!");
+//        alert.setContentText("Vui lòng chọn một sinh viên để xem chi tiết.");
+//        alert.show();
+//        return;
+//      }
+//
+//      Stage stage = new Stage();
+//      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/XemChiTietDoAnView.fxml"));
+//      Parent root = fxmlLoader.load();
+//
+//      Scene scene = new Scene(root);
+//      stage.setScene(scene);
+//
+//      // Truyền đối tượng sinh viên vào controller
+//      XemChiTietDoAnController controller = fxmlLoader.getController();
+//      controller.setDoAn(selectedDoAn);
+//
+//      stage.setTitle("Thông Tin Chi Tiết Sinh Viên");
+//      stage.showAndWait();
+//
+//    } catch (IOException e) {
+//      e.printStackTrace();
+//    }
+  }
+
+  private void handleDelete(ActionEvent event) {
+//    // Lấy sinh viên được chọn trong TableView
+//    DoAn selectedDoAn = doAnTable.getSelectionModel().getSelectedItem();
+//
+//    if (selectedDoAn != null) {
+//      // Hiển thị hộp thoại xác nhận xóa
+//      Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+//      alert.setTitle("Xác nhận xóa");
+//      alert.setHeaderText("Bạn có chắc chắn muốn xóa sinh viên này?");
+//      alert.setContentText("Tên sinh viên: " + selectedDoAn.getHoTen());
+//
+//      // Hiển thị hộp thoại và chờ người dùng phản hồi
+//      alert.showAndWait().ifPresent(response -> {
+//        if (response == ButtonType.OK) {
+//          // Xử lý xóa sinh viên
+//
+//          try {
+//            APIClient.delete("DoAn/"+selectedDoAn.getId(),selectedDoAn);
+//            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+//            alert1.setTitle("Thành công");
+//            alert1.setHeaderText("Sinh viên đã được xóa");
+//            alert1.showAndWait();
+//          } catch (Exception e) {
+//            Alert alert1 = new Alert(Alert.AlertType.ERROR);
+//            alert1.setTitle("Lỗi");
+//            alert1.setHeaderText("Không thể xóa sinh viên");
+//            alert1.setContentText("Đối tượng có liên quan tới bảng khác, không thể xóa.");
+//            alert1.showAndWait();
+//          }
+//        }
+//      });
+//    } else {
+//      // Nếu không có sinh viên nào được chọn, hiển thị thông báo
+//      Alert alert = new Alert(Alert.AlertType.WARNING);
+//      alert.setTitle("Cảnh báo");
+//      alert.setHeaderText("Chưa chọn sinh viên");
+//      alert.setContentText("Vui lòng chọn sinh viên muốn xóa.");
+//      alert.showAndWait();
+//    }
+  }
+
 }

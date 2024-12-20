@@ -28,7 +28,7 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SinhVienView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("Quản Lý Đồ Án");
         primaryStage.setScene(new Scene(root));

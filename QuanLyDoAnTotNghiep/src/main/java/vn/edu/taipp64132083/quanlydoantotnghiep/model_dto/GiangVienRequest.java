@@ -5,7 +5,7 @@ public class GiangVienRequest {
   private String Email;
   private String SDT;
   private Integer MaBoMon;
-  private Boolean CanBoKhoa;
+  private Integer CanBoKhoa;
   private Integer HanMucHD;
   private Integer SoLuongHuongDan;
 
@@ -14,7 +14,7 @@ public class GiangVienRequest {
   }
 
   // Constructor đầy đủ tham số
-  public GiangVienRequest(String hoTen, String email, String sdt, Integer maBoMon, Boolean canBoKhoa, Integer hanMucHD, Integer soLuongHuongDan) {
+  public GiangVienRequest(String hoTen, String email, String sdt, Integer maBoMon, Integer canBoKhoa, Integer hanMucHD, Integer soLuongHuongDan) {
     this.HoTen = hoTen;
     this.Email = email;
     this.SDT = sdt;
@@ -57,11 +57,11 @@ public class GiangVienRequest {
     this.MaBoMon = maBoMon;
   }
 
-  public Boolean getCanBoKhoa() {
+  public Integer getCanBoKhoa() {
     return CanBoKhoa;
   }
 
-  public void setCanBoKhoa(Boolean canBoKhoa) {
+  public void setCanBoKhoa(Integer canBoKhoa) {
     this.CanBoKhoa = canBoKhoa;
   }
 

@@ -98,16 +98,7 @@ public class GiangVien implements Identifiable {
 
   @Override
   public String toString() {
-    return "GiangVien{" +
-            "MaGiangVien=" + MaGiangVien +
-            ", HoTen='" + HoTen + '\'' +
-            ", Email='" + Email + '\'' +
-            ", SDT='" + SDT + '\'' +
-            ", CanBoKhoa=" + CanBoKhoa +
-            ", HanMucHD=" + HanMucHD +
-            ", SoLuongHuongDan=" + SoLuongHuongDan +
-            ", bo_mon=" + bo_mon.getTenBoMon()+
-            '}';
+    return this.getHoTen();
 
   }
 }

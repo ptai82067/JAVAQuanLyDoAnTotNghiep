@@ -50,10 +50,7 @@ public class AddSinhVienController {
       SinhVienRequest response = APIClient.post("SinhVien", sinhVienRequest);
 
       // Hiển thị thông báo thành công
-      Alert alert = new Alert(Alert.AlertType.INFORMATION);
-      alert.setTitle("Thành công");
-      alert.setHeaderText("Đã thêm sinh viên thành công!");
-      alert.showAndWait();
+
 
       // Đóng form
       Stage stage = (Stage) btnAdd.getScene().getWindow();

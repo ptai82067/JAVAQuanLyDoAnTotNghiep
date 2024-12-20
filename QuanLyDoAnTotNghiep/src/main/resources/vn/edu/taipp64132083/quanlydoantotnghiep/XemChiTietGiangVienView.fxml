@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="vn.edu.taipp64132083.quanlydoantotnghiep.controller.XemChiTietGiangVienController">
+
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;" alignment="CENTER">
+            <Label text="Thông Tin Chi Tiết Giảng Viên" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+            <GridPane hgap="10" vgap="10" alignment="CENTER" style="-fx-padding: 10;">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="40"/>
+                    <ColumnConstraints percentWidth="60"/>
+                </columnConstraints>
+
+                <!-- Họ tên -->
+                <Label text="Họ tên:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="lblHoTen" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <!-- Email -->
+                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="lblEmail" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <!-- Số điện thoại -->
+                <Label text="Số điện thoại:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="lblSDT" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <!-- Cán bộ khoa -->
+                <Label text="Cán bộ khoa:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label fx:id="lblCanBoKhoa" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <!-- Hạn mức hướng dẫn -->
+                <Label text="Hạn mức hướng dẫn:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Label fx:id="lblHanMucHD" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <!-- Số lượng hướng dẫn hiện tại -->
+                <Label text="Số lượng hướng dẫn hiện tại:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <Label fx:id="lblSoLuongHuongDan" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                <!-- Bộ môn -->
+                <Label text="Bộ môn:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <Label fx:id="lblBoMon" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+            </GridPane>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" style="-fx-padding: 10;" alignment="CENTER" >
+            <Button text="Đóng" fx:id="btnClose"/>
+        </HBox>
+    </bottom>
+</BorderPane>

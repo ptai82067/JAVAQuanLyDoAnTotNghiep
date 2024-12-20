@@ -79,16 +79,7 @@ public class SinhVien implements Identifiable {
 
     @Override
     public String toString() {
-      return "SinhVien{" +
-              "MaSinhVien=" + MaSinhVien +
-              ", HoTen='" + HoTen + '\'' +
-              ", NgaySinh=" + NgaySinh +
-              ", GioiTinh=" + (GioiTinh == 1 ? "Nam" : "Nữ") +
-              ", Email='" + Email + '\'' +
-              ", SDT='" + SDT + '\'' +
-              ", TrangThai=" + TrangThai +
-              ", lop=" + lop.getTenLop() +
-              '}';
+      return this.getHoTen();
 
     }
   @Override

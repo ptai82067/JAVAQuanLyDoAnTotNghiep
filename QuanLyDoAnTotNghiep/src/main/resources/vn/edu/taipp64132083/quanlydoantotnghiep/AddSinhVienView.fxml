@@ -29,8 +29,8 @@
         <ComboBox fx:id="cmbGioiTinh" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <!-- <String fx:value="Nam" /> -->
-                    <!-- <String fx:value="Nữ" /> -->
+<!--                     <String fx:value="Nam" /> -->
+<!--                     <String fx:value="Nữ" /> -->
                 </FXCollections>
             </items>
         </ComboBox>

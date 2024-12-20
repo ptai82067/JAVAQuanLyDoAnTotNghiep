@@ -2,6 +2,8 @@ package vn.edu.taipp64132083.quanlydoantotnghiep.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import javafx.scene.control.Alert;
+
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -10,8 +12,8 @@ import java.net.http.HttpResponse;
 import java.util.List;
 
 public class APIClient {
-  private static final String BASE_URL = "http://localhost:8000/api/";
-//  private static final String BASE_URL = "https://quanlyduan-production.up.railway.app/api/"; // URL gốc của API
+//  private static final String BASE_URL = "http://localhost:8000/api/";
+  private static final String BASE_URL = "https://quanlyduan-production.up.railway.app/api/"; // URL gốc của API
   private static final Gson gson = new Gson();
   private static final HttpClient client = HttpClient.newHttpClient();
 
@@ -63,7 +65,14 @@ public class APIClient {
     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
     if (response.statusCode() == 201) {
-      return gson.fromJson(response.body(), (Class<T>) object.getClass()); // Chuyển đổi dữ liệu JSON thành đối tượng
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Add");
+      alert.setHeaderText("");
+      alert.setContentText("Thêm thành công!");
+      // Hiển thị hộp thoại
+      alert.showAndWait();
+      return gson.fromJson(response.body(), (Class<T>) object.getClass());
+      // Chuyển đổi dữ liệu JSON thành đối tượng
     } else {
       throw new Exception("POST request failed with status: " + response.statusCode());
     }
@@ -82,6 +91,12 @@ public class APIClient {
     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
     if (response.statusCode() == 200) {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Edit");
+      alert.setHeaderText("");
+      alert.setContentText("Thay đổi thành công!");
+      // Hiển thị hộp thoại
+      alert.showAndWait();
       return gson.fromJson(response.body(), (Class<T>) object.getClass()); // Chuyển đổi dữ liệu JSON thành đối tượng
     } else {
       throw new Exception("PUT request failed with status: " + response.statusCode());
@@ -101,6 +116,12 @@ public class APIClient {
     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
     if (response.statusCode() == 200) {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Delete");
+      alert.setHeaderText("");
+      alert.setContentText("Xóa thành công thành công!");
+      // Hiển thị hộp thoại
+      alert.showAndWait();
       return gson.fromJson(response.body(), (Class<T>) object.getClass()); // Chuyển đổi dữ liệu JSON thành đối tượng
     } else {
       throw new Exception("DELETE request failed with status: " + response.statusCode());
