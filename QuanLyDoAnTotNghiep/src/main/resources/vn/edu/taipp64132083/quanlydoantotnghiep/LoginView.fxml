@@ -13,12 +13,12 @@
   <left>
     <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #404040;" BorderPane.alignment="CENTER">
       <children>
-        <Text fill="WHITE" layoutX="24.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company" wrappingWidth="263.51171875">
+        <Text fill="WHITE" layoutX="91.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NTU" wrappingWidth="117.51171875">
           <font>
             <Font name="System Bold" size="54.0" />
           </font>
         </Text>
-        <Text fill="WHITE" layoutX="82.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company Slogan">
+        <Text fill="WHITE" layoutX="43.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trường Đại Học Nha Trang">
           <font>
             <Font size="18.0" />
           </font>
@@ -29,9 +29,9 @@
   <right>
     <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
       <children>
-        <TextField fx:id="username" layoutX="49.0" layoutY="163.0" prefHeight="25.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
-        <PasswordField fx:id="password" layoutX="49.0" layoutY="202.0" prefHeight="25.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
-        <Button layoutX="112.0" layoutY="255.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="32.0" prefWidth="76.0" style="-fx-background-color: #404040; -fx-background-radius: 0px;" text="Login" textFill="WHITE">
+        <TextField fx:id="usernameField" layoutX="49.0" layoutY="163.0" prefHeight="25.0" prefWidth="202.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+        <PasswordField fx:id="passwordField" layoutX="49.0" layoutY="202.0" prefHeight="25.0" prefWidth="202.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #404040; -fx-border-width: 0px 0px 2px 0px;" />
+        <Button fx:id="loginButton" layoutX="112.0" layoutY="255.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="32.0" prefWidth="76.0" style="-fx-background-color: #404040; -fx-background-radius: 0px;" text="Login" textFill="WHITE">
           <cursor>
             <Cursor fx:constant="OPEN_HAND" />
           </cursor></Button>
