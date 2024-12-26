@@ -146,53 +146,55 @@ public class DoAnController implements Initializable {
 
   @FXML
   private void handleAdd(ActionEvent event) {
-//    try {
-//      Stage stage = new Stage();
-//      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/AddDoAnView.fxml"));
-//      Parent root = fxmlLoader.load();
-//      Scene scene = new Scene(root);
-//      stage.setScene(scene);
-//      stage.setTitle("Thêm Sinh Viên");
-//      stage.showAndWait();
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
+    try {
+      Stage stage = new Stage();
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/AddDoAnView.fxml"));
+      Parent root = fxmlLoader.load();
+      Scene scene = new Scene(root);
+      stage.setScene(scene);
+      stage.setTitle("Thêm Sinh Viên");
+      stage.showAndWait();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
   @FXML
   private void handleEdit(ActionEvent event) {
-//    try {
-//      // Lấy sinh viên được chọn trong bảng
-//      DoAn selectedDoAn = doAnTable.getSelectionModel().getSelectedItem();
-//      if (selectedDoAn == null) {
-//        Alert alert = new Alert(Alert.AlertType.WARNING);
-//        alert.setTitle("Cảnh báo");
-//        alert.setHeaderText("Chưa chọn sinh viên!");
-//        alert.setContentText("Vui lòng chọn một sinh viên để chỉnh sửa.");
-//        alert.show();
-//        return;
-//      }
-//
-//      // Tải form chỉnh sửa
-//      Stage stage = new Stage();
-//      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/EditDoAnView.fxml"));
-//      Parent root = fxmlLoader.load();
-//
-//      Scene scene = new Scene(root);
-//      stage.setScene(scene);
-//
-//      // Truyền đối tượng sinh viên vào controller
-//      EditDoAnController controller = fxmlLoader.getController();
-//      controller.setDoAn(selectedDoAn);
-//
-//      stage.setTitle("Sửa Sinh Viên");
-//      stage.showAndWait();
-//
-//      // Sau khi chỉnh sửa, cập nhật lại danh sách (nếu cần)
-//      updateTableView();
-//
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//    }
+    try {
+      // Lấy sinh viên được chọn trong bảng
+      DoAn selectedDoAn = doAnTable.getSelectionModel().getSelectedItem();
+      if (selectedDoAn == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Cảnh báo");
+        alert.setHeaderText("Chưa chọn sinh viên!");
+        alert.setContentText("Vui lòng chọn một sinh viên để chỉnh sửa.");
+        alert.show();
+        return;
+      }
+
+      // Tải form chỉnh sửa
+      Stage stage = new Stage();
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/EditDoAnView.fxml"));
+      Parent root = fxmlLoader.load();
+
+      Scene scene = new Scene(root);
+      stage.setScene(scene);
+
+      // Truyền đối tượng sinh viên vào controller
+      EditDoAnController controller = fxmlLoader.getController();
+      controller.setDoAn(selectedDoAn);
+
+      stage.setTitle("Sửa Sinh Viên");
+      stage.showAndWait();
+
+      // Sau khi chỉnh sửa, cập nhật lại danh sách (nếu cần)
+      updateTableView();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
   @FXML
   private void handleDetail(ActionEvent event) {

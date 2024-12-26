@@ -32,6 +32,17 @@ public class DoAnRequest {
     this.HanMucDK = hanMucDK;
     this.SoLuongDK = soLuongDK;
   }
+  public DoAnRequest(String tenDoAn, String moTa, int doKho, int maNguoiTao,
+                     String ngayTao, String ngayDuyet, Integer hanMucDK, Integer soLuongDK) {
+    this.TenDoAn = tenDoAn;
+    this.MoTa = moTa;
+    this.DoKho = doKho;
+    this.MaNguoiTao = maNguoiTao;
+    this.NgayTao = ngayTao;
+    this.NgayDuyet = ngayDuyet;
+    this.HanMucDK = hanMucDK;
+    this.SoLuongDK = soLuongDK;
+  }
 
   // Getter và Setter
   public String getTenDoAn() {
