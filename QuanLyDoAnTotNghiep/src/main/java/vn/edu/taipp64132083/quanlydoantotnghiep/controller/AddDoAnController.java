@@ -5,8 +5,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import vn.edu.taipp64132083.quanlydoantotnghiep.dal.APIDataCache;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.DoAnRequest;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.BoMon;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.SessionData;
 import vn.edu.taipp64132083.quanlydoantotnghiep.utils.APIClient;
 import vn.edu.taipp64132083.quanlydoantotnghiep.utils.Service;
 
@@ -39,7 +41,11 @@ public class AddDoAnController {
       String moTa = txtMoTa.getText();
       String doKhoString = cbDoKho.getValue();  // Lấy giá trị từ ChoiceBox
       int doKho = convertDoKhoToInt(doKhoString);  // Chuyển đổi thành giá trị int
-      int maNguoiTao = Integer.parseInt(txtMaNguoiTao.getText());
+      // Truy cập thông tin session từ APIDataCache
+      ObservableList<SessionData> sessions = APIDataCache.getInstance()
+              .getListFromCache("LoginSession", SessionData.class);
+      SessionData session = sessions.get(0);
+      int maNguoiTao = session.getId();
       Integer maNguoiDuyet = txtMaNguoiDuyet.getText().isEmpty() ? null : Integer.parseInt(txtMaNguoiDuyet.getText());
       Integer maNguoiKhoaDoAn = txtMaNguoiKhoaDoAn.getText().isEmpty() ? null : Integer.parseInt(txtMaNguoiKhoaDoAn.getText());
       String ngayTao = txtNgayTao.getText();

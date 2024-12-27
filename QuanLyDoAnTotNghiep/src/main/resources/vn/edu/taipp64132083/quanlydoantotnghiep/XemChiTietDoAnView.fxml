@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="vn.edu.taipp64132083.quanlydoantotnghiep.controller.XemChiTietDoAnController">
+
+    <center>
+        <VBox spacing="15" style="-fx-padding: 20;" alignment="CENTER">
+            <Label text="Thông Tin Chi Tiết Đồ Án" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+            <GridPane hgap="10" vgap="10" alignment="CENTER" style="-fx-padding: 10;">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="40"/>
+                    <ColumnConstraints percentWidth="60"/>
+                </columnConstraints>
+
+                <!-- Tên đồ án -->
+                <Label text="Tên đồ án:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="lblTenDoAn" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <!-- Mô tả -->
+                <Label text="Mô tả:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="lblMoTa" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <!-- Độ khó -->
+                <Label text="Độ khó:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="lblDoKho" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                <!-- Ngày tạo -->
+                <Label text="Ngày tạo:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label fx:id="lblNgayTao" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                <!-- Ngày duyệt -->
+                <Label text="Ngày duyệt:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Label fx:id="lblNgayDuyet" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                <!-- Hạn mức đăng ký -->
+                <Label text="Hạn mức đăng ký:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <Label fx:id="lblHanMucDK" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                <!-- Số lượng đăng ký -->
+                <Label text="Số lượng đăng ký:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                <Label fx:id="lblSoLuongDK" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                <!-- Giảng viên tạo -->
+                <Label text="Giảng viên tạo:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                <Label fx:id="lblGiangVienTao" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+
+                <!-- Giảng viên duyệt -->
+                <Label text="Giảng viên duyệt:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                <Label fx:id="lblGiangVienDuyet" GridPane.columnIndex="1" GridPane.rowIndex="8"/>
+
+                <!-- Giảng viên khoa đồ án -->
+                <Label text="Giảng viên khoa đồ án:" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
+                <Label fx:id="lblGiangVienKhoaDoAn" GridPane.columnIndex="1" GridPane.rowIndex="9"/>
+            </GridPane>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="15" style="-fx-padding: 10;" alignment="CENTER" >
+            <Button text="Đóng" fx:id="btnClose"/>
+        </HBox>
+    </bottom>
+</BorderPane>
+

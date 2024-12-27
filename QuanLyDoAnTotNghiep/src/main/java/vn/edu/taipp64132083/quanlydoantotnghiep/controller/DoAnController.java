@@ -160,44 +160,6 @@ public class DoAnController implements Initializable {
   }
   @FXML
   private void handleEdit(ActionEvent event) {
-    try {
-      // Lấy sinh viên được chọn trong bảng
-      DoAn selectedDoAn = doAnTable.getSelectionModel().getSelectedItem();
-      if (selectedDoAn == null) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Cảnh báo");
-        alert.setHeaderText("Chưa chọn sinh viên!");
-        alert.setContentText("Vui lòng chọn một sinh viên để chỉnh sửa.");
-        alert.show();
-        return;
-      }
-
-      // Tải form chỉnh sửa
-      Stage stage = new Stage();
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/EditDoAnView.fxml"));
-      Parent root = fxmlLoader.load();
-
-      Scene scene = new Scene(root);
-      stage.setScene(scene);
-
-      // Truyền đối tượng sinh viên vào controller
-      EditDoAnController controller = fxmlLoader.getController();
-      controller.setDoAn(selectedDoAn);
-
-      stage.setTitle("Sửa Sinh Viên");
-      stage.showAndWait();
-
-      // Sau khi chỉnh sửa, cập nhật lại danh sách (nếu cần)
-      updateTableView();
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-  }
-  @FXML
-  private void handleDetail(ActionEvent event) {
 //    try {
 //      // Lấy sinh viên được chọn trong bảng
 //      DoAn selectedDoAn = doAnTable.getSelectionModel().getSelectedItem();
@@ -205,28 +167,66 @@ public class DoAnController implements Initializable {
 //        Alert alert = new Alert(Alert.AlertType.WARNING);
 //        alert.setTitle("Cảnh báo");
 //        alert.setHeaderText("Chưa chọn sinh viên!");
-//        alert.setContentText("Vui lòng chọn một sinh viên để xem chi tiết.");
+//        alert.setContentText("Vui lòng chọn một sinh viên để chỉnh sửa.");
 //        alert.show();
 //        return;
 //      }
 //
+//      // Tải form chỉnh sửa
 //      Stage stage = new Stage();
-//      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/XemChiTietDoAnView.fxml"));
+//      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/EditDoAnView.fxml"));
 //      Parent root = fxmlLoader.load();
 //
 //      Scene scene = new Scene(root);
 //      stage.setScene(scene);
 //
 //      // Truyền đối tượng sinh viên vào controller
-//      XemChiTietDoAnController controller = fxmlLoader.getController();
+//      EditDoAnController controller = fxmlLoader.getController();
 //      controller.setDoAn(selectedDoAn);
 //
-//      stage.setTitle("Thông Tin Chi Tiết Sinh Viên");
+//      stage.setTitle("Sửa Sinh Viên");
 //      stage.showAndWait();
+//
+//      // Sau khi chỉnh sửa, cập nhật lại danh sách (nếu cần)
+//      updateTableView();
 //
 //    } catch (IOException e) {
 //      e.printStackTrace();
+//    } catch (Exception e) {
+//      throw new RuntimeException(e);
 //    }
+  }
+  @FXML
+  private void handleDetail(ActionEvent event) {
+    try {
+      // Lấy sinh viên được chọn trong bảng
+      DoAn selectedDoAn = doAnTable.getSelectionModel().getSelectedItem();
+      if (selectedDoAn == null) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Cảnh báo");
+        alert.setHeaderText("Chưa chọn sinh viên!");
+        alert.setContentText("Vui lòng chọn một đồ án để xem chi tiết.");
+        alert.show();
+        return;
+      }
+
+      Stage stage = new Stage();
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/vn/edu/taipp64132083/quanlydoantotnghiep/XemChiTietDoAnView.fxml"));
+      Parent root = fxmlLoader.load();
+
+      Scene scene = new Scene(root);
+      stage.setScene(scene);
+
+      // Truyền đối tượng sinh viên vào controller
+      XemChiTietDoAnController controller = fxmlLoader.getController();
+      controller.setDoAn(selectedDoAn);
+
+      stage.setTitle("Thông Tin Chi Tiết Đồ Án");
+      stage.showAndWait();
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   private void handleDelete(ActionEvent event) {
