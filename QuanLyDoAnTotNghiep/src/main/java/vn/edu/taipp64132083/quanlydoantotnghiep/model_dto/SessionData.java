@@ -7,10 +7,10 @@ import java.util.Map;
 public class SessionData implements Identifiable {
   private int userId;
   private String role;
-  private Map<String, Object> userDetails;
+  private  GiangVien userDetails;
   private List<String> permissions;
 
-  public SessionData(int userId, String role, Map<String, Object> userDetails, List<String> permissions) {
+  public SessionData(int userId, String role,  GiangVien userDetails, List<String> permissions) {
     this.userId = userId;
     this.role = role;
     this.userDetails = userDetails;
@@ -39,11 +39,11 @@ public class SessionData implements Identifiable {
     this.role = role;
   }
 
-  public Map<String, Object> getUserDetails() {
+  public  GiangVien getUserDetails() {
     return userDetails;
   }
 
-  public void setUserDetails(Map<String, Object> userDetails) {
+  public void setUserDetails( GiangVien userDetails) {
     this.userDetails = userDetails;
   }
 

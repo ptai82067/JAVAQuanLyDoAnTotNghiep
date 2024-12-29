@@ -70,4 +70,21 @@ public class PaginationService<T extends Identifiable> {
   public int getTotalPages() {
     return (int) Math.ceil((double) allItems.size() / itemsPerPage);
   }
+  // Làm mới dữ liệu và cập nhật trang hiện tại
+  public void refresh(ObservableList<T> updatedItems) {
+    // Cập nhật toàn bộ danh sách
+    this.allItems = updatedItems;
+
+    // Kiểm tra nếu số lượng dữ liệu giảm làm trang hiện tại bị vượt quá giới hạn
+    if (currentPage * itemsPerPage >= allItems.size()) {
+      currentPage = (int) Math.ceil((double) allItems.size() / itemsPerPage) - 1;
+      if (currentPage < 0) {
+        currentPage = 0;  // Nếu danh sách trống, đảm bảo không bị lỗi
+      }
+    }
+
+    // Cập nhật lại dữ liệu trang hiện tại
+    updateCurrentPageData();
+  }
+
 }

@@ -6,6 +6,7 @@ module vn.edu.taipp64132083.quanlydoantotnghiep {
   requires java.net.http;
   requires com.google.gson;
   requires java.logging;
+  requires Java.WebSocket;
   opens vn.edu.taipp64132083.quanlydoantotnghiep to javafx.fxml;
     exports vn.edu.taipp64132083.quanlydoantotnghiep;
   exports vn.edu.taipp64132083.quanlydoantotnghiep.controller;

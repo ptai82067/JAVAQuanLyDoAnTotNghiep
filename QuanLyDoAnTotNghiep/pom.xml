@@ -40,6 +40,11 @@
       <version>4.3.0-9.1.2</version>
     </dependency>
 
+    <dependency>
+      <groupId>org.java-websocket</groupId>
+      <artifactId>Java-WebSocket</artifactId>
+      <version>1.5.3</version> <!-- Bạn có thể kiểm tra phiên bản mới nhất -->
+    </dependency>
 
 
 

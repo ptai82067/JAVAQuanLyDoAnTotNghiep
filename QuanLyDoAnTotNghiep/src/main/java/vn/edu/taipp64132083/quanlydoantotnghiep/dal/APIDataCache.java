@@ -2,6 +2,7 @@ package vn.edu.taipp64132083.quanlydoantotnghiep.dal;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.GiangVien;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.Identifiable;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.SessionData;
 
@@ -78,7 +79,7 @@ public class APIDataCache {
     }
     return FXCollections.observableArrayList(); // Trả về danh sách rỗng nếu không tìm thấy
   }
-  public void saveLoginSession(int userId, String role, Map<String, Object> userDetails, List<String> permissions) {
+  public void saveLoginSession(int userId, String role,  GiangVien userDetails, List<String> permissions) {
     SessionData sessionData = new SessionData(userId, role, userDetails, permissions);
     ObservableList<Identifiable> sessionList = FXCollections.observableArrayList(sessionData);
     cache.put("LoginSession", sessionList);

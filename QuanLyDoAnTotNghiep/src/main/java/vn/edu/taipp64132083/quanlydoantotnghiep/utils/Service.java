@@ -44,7 +44,7 @@ public class Service {
   }
 
   // Hàm lấy danh sách DoAn từ cache hoặc API
-  public ObservableList<DoAn> getDoAnList() throws Exception {
+  public static ObservableList<DoAn> getDoAnList() throws Exception {
     // Kiểm tra nếu danh sách DoAn đã có trong cache
     List<DoAn> list = (List<DoAn>)APIDataCache.getInstance()
             .getListFromCache(DOAN_TABLE_NAME, DoAn.class);
@@ -63,8 +63,18 @@ public class Service {
     }
     return doAnList;
   }
+  public static DoAn refeshDoAn() throws Exception {
+    List<DoAn> list1 = APIClient.get("DoAn", DoAn.class);
+    ObservableList<DoAn> doAnList = FXCollections.observableArrayList(list1);
+    // Lưu vào cache sau khi nhận được dữ liệu
+    if (doAnList != null) {
 
-  public ObservableList<GiangVien> getGiangVienList() throws Exception {
+        APIDataCache.getInstance().addInCache(DOAN_TABLE_NAME, doAnList.getLast());
+      return doAnList.getLast();
+    }
+    return null;
+  }
+  public static ObservableList<GiangVien> getGiangVienList() throws Exception {
     // Kiểm tra nếu danh sách DoAn đã có trong cache
     List<GiangVien> list = (List<GiangVien>)APIDataCache.getInstance()
             .getListFromCache(GIANGVIEN_TABLE_NAME, GiangVien.class);

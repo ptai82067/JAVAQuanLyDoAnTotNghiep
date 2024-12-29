@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import vn.edu.taipp64132083.quanlydoantotnghiep.dal.APIDataCache;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.DoAn;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.DoAnRequest;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.BoMon;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.SessionData;
@@ -21,7 +22,8 @@ public class AddDoAnController {
   private ChoiceBox<String> cbDoKho;
   @FXML
   private Button btnAdd, btnCancel;
-
+  ObservableList<SessionData> sessions = APIDataCache.getInstance()
+          .getListFromCache("LoginSession", SessionData.class);
   @FXML
   public void initialize() throws Exception {
     ObservableList<String> doKhoList = FXCollections.observableArrayList("Dễ", "Vừa", "Khó", "Rất khó");
@@ -42,10 +44,9 @@ public class AddDoAnController {
       String doKhoString = cbDoKho.getValue();  // Lấy giá trị từ ChoiceBox
       int doKho = convertDoKhoToInt(doKhoString);  // Chuyển đổi thành giá trị int
       // Truy cập thông tin session từ APIDataCache
-      ObservableList<SessionData> sessions = APIDataCache.getInstance()
-              .getListFromCache("LoginSession", SessionData.class);
+
       SessionData session = sessions.get(0);
-      int maNguoiTao = session.getId();
+      int maNguoiTao = session.getUserDetails().getId();
       Integer maNguoiDuyet = txtMaNguoiDuyet.getText().isEmpty() ? null : Integer.parseInt(txtMaNguoiDuyet.getText());
       Integer maNguoiKhoaDoAn = txtMaNguoiKhoaDoAn.getText().isEmpty() ? null : Integer.parseInt(txtMaNguoiKhoaDoAn.getText());
       String ngayTao = txtNgayTao.getText();
@@ -59,7 +60,6 @@ public class AddDoAnController {
 
       // Gửi yêu cầu thêm đồ án qua API
       DoAnRequest response = APIClient.post(Service.DOAN_TABLE_NAME, doAnRequest);
-
 
       // Đóng form
       Stage stage = (Stage) btnAdd.getScene().getWindow();

@@ -5,6 +5,7 @@ import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import vn.edu.taipp64132083.quanlydoantotnghiep.dal.APIDataCache;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.GiangVien;
 import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.SessionData;
 
 import java.io.OutputStream;
@@ -62,7 +63,9 @@ public class LoginHandler {
       // Trích xuất thông tin từ phản hồi
       int userId = ((Double) response.get("userId")).intValue();
       String role = (String) response.get("role");
-      Map<String, Object> userDetails = (Map<String, Object>) response.get("userDetails");
+      Gson gson = new Gson();
+      String userDetailsJson = gson.toJson(response.get("userDetails"));
+      GiangVien userDetails = gson.fromJson(userDetailsJson, GiangVien.class);
 
       // Chuyển Iterable<String> sang List<String> rồi sang ObservableList<String>
       Iterable<String> permissionIterable = (Iterable<String>) response.get("permissions");

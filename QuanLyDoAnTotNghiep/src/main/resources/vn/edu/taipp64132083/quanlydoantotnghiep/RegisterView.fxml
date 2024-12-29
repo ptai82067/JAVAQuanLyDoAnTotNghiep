@@ -48,7 +48,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Text>
-            <ChoiceBox layoutX="47.0" layoutY="107.0" prefHeight="31.0" prefWidth="200.0" />
+            <ChoiceBox fx:id="cbTenGiangVien" layoutX="47.0" layoutY="107.0" prefHeight="31.0" prefWidth="200.0" />
             <Label layoutX="46.0" layoutY="86.0" text="Tên người dùng" />
             </children>
         </AnchorPane>
