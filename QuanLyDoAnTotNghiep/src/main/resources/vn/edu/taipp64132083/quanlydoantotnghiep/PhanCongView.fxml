@@ -25,14 +25,12 @@
             <Label text="Mã Sinh Viên:" GridPane.rowIndex="1" />
             <ChoiceBox fx:id="cbMaSinhVien" prefHeight="31.0" prefWidth="202.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-            <Label text="Mã Giảng Viên:" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="cbMaGiangVien" prefHeight="31.0" prefWidth="201.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <Label text="Ngày Phân Công:" GridPane.rowIndex="3" />
-            <TextField fx:id="txtNgayPhanCong" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="txtNgayPhanCong" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
             <Label text="Ghi Chú:" GridPane.rowIndex="4" />
-            <TextField fx:id="txtGhiChu" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="txtGhiChu" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          <rowConstraints>
             <RowConstraints />
             <RowConstraints />

@@ -55,6 +55,13 @@ public class DoAnController implements Initializable {
           .getListFromCache("LoginSession", SessionData.class);
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    SessionData session = sessions.get(0);
+   if(session.getUserDetails().getCanBoKhoa()==0)  {
+     btnDuyet.setVisible(false);
+     btnDuyet.setDisable(false);
+     btnKhoa.setVisible(false);
+     btnKhoa.setDisable(false);
+    }
     tenDoAn.setCellValueFactory(new PropertyValueFactory<>("tenDoAn"));
     ngayTao.setCellValueFactory(new PropertyValueFactory<>("ngayTao"));
     ngayDuyet.setCellValueFactory(new PropertyValueFactory<>("ngayDuyet"));
@@ -187,6 +194,12 @@ public class DoAnController implements Initializable {
       allDoAn.add(Service.refeshDoAn());
       doAnTable.refresh();
       updateTableView();
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Làm Mới");
+      alert.setHeaderText("");
+      alert.setContentText("Làm mới thành công!");
+      // Hiển thị hộp thoại
+      alert.showAndWait();
     }catch (Exception e){
 
     }

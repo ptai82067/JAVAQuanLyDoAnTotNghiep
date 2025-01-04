@@ -32,6 +32,7 @@
                 <Button fx:id="btnEdit" text="Sửa" />
                 <Button fx:id="btnDelete" text="Xóa" />
                 <Button fx:id="btnDetail" text="Xem chi tiết" />
+                <Button fx:id="btnLamMoi" text="Làm mới" />
             </children>
         </HBox>
         <TableView fx:id="sinhVienTable" layoutX="20.0" layoutY="192.0" prefHeight="452.0" prefWidth="1165.0" stylesheets="@asset/fullpackstyling.css" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="192.0">
@@ -41,6 +42,7 @@
                 <TableColumn fx:id="gioiTinh" prefWidth="75.0" text="Giới tính" />
                 <TableColumn fx:id="email" prefWidth="75.0" text="Email" />
                 <TableColumn fx:id="lop" prefWidth="75.0" text="Lớp" />
+
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

@@ -16,7 +16,7 @@ import vn.edu.taipp64132083.quanlydoantotnghiep.utils.Service;
 public class AddDoAnController {
 
   @FXML
-  private TextField txtTenDoAn, txtMoTa, txtMaNguoiTao, txtMaNguoiDuyet, txtMaNguoiKhoaDoAn,
+  private TextField txtTenDoAn, txtMoTa,
           txtNgayTao, txtNgayDuyet, txtHanMucDK, txtSoLuongDK;
   @FXML
   private ChoiceBox<String> cbDoKho;
@@ -47,8 +47,8 @@ public class AddDoAnController {
 
       SessionData session = sessions.get(0);
       int maNguoiTao = session.getUserDetails().getId();
-      Integer maNguoiDuyet = txtMaNguoiDuyet.getText().isEmpty() ? null : Integer.parseInt(txtMaNguoiDuyet.getText());
-      Integer maNguoiKhoaDoAn = txtMaNguoiKhoaDoAn.getText().isEmpty() ? null : Integer.parseInt(txtMaNguoiKhoaDoAn.getText());
+      Integer maNguoiDuyet = null;
+      Integer maNguoiKhoaDoAn = null;
       String ngayTao = txtNgayTao.getText();
       String ngayDuyet = txtNgayDuyet.getText().isEmpty() ? null : txtNgayDuyet.getText();
       int hanMucDK = Integer.parseInt(txtHanMucDK.getText());

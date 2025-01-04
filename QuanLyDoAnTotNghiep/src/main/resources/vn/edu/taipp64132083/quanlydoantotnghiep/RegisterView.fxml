@@ -15,12 +15,12 @@
     <left>
         <AnchorPane prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: #404040;" BorderPane.alignment="CENTER">
             <children>
-                <Text fill="WHITE" layoutX="24.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company" wrappingWidth="263.51171875">
+                <Text fill="WHITE" layoutX="1.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NTU" textAlignment="CENTER" wrappingWidth="298.51171875">
                     <font>
                         <Font name="System Bold" size="54.0" />
                     </font>
                 </Text>
-                <Text fill="WHITE" layoutX="82.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company Slogan">
+                <Text fill="WHITE" layoutX="-2.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trường đại học Nha Trang" textAlignment="CENTER" wrappingWidth="304.1357421875">
                     <font>
                         <Font size="18.0" />
                     </font>

@@ -71,6 +71,28 @@ public class Service {
     }
     return null;
   }
+  public static SinhVien refeshSinhVien() throws Exception {
+    List<SinhVien> list1 = APIClient.get("SinhVien", SinhVien.class);
+    ObservableList<SinhVien> sinhViens = FXCollections.observableArrayList(list1);
+    // Lưu vào cache sau khi nhận được dữ liệu
+    if (sinhViens != null) {
+
+      APIDataCache.getInstance().addInCache(SINHVIEN_TABLE_NAME, sinhViens.getLast());
+      return sinhViens.getLast();
+    }
+    return null;
+  }
+  public static GiangVien refeshGiangVien() throws Exception {
+    List<GiangVien> list1 = APIClient.get("GiangVien", GiangVien.class);
+    ObservableList<GiangVien> giangViens = FXCollections.observableArrayList(list1);
+    // Lưu vào cache sau khi nhận được dữ liệu
+    if (giangViens != null) {
+
+      APIDataCache.getInstance().addInCache(GIANGVIEN_TABLE_NAME, giangViens.getLast());
+      return giangViens.getLast();
+    }
+    return null;
+  }
   public static ObservableList<GiangVien> getGiangVienList() throws Exception {
     // Kiểm tra nếu danh sách DoAn đã có trong cache
     List<GiangVien> list = (List<GiangVien>)APIDataCache.getInstance()

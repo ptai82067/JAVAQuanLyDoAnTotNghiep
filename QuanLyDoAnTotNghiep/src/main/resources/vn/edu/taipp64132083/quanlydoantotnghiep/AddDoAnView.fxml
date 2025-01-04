@@ -34,34 +34,21 @@
             </items>
         </ChoiceBox>
 
-
-        <!-- Mã người tạo -->
-        <Label text="Mã người tạo:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-        <TextField fx:id="txtMaNguoiTao" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-        <!-- Mã người duyệt -->
-        <Label text="Mã người duyệt:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-        <TextField fx:id="txtMaNguoiDuyet" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-
-        <!-- Mã người khoa đồ án -->
-        <Label text="Mã người khoa đồ án:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
-        <TextField fx:id="txtMaNguoiKhoaDoAn" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-
         <!-- Ngày tạo -->
-        <Label text="Ngày tạo:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
-        <TextField fx:id="txtNgayTao" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label text="Ngày tạo:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtNgayTao" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
         <!-- Ngày duyệt -->
-        <Label text="Ngày duyệt:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
-        <TextField fx:id="txtNgayDuyet" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Label text="Ngày duyệt:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="txtNgayDuyet" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
         <!-- Hạn mức đăng ký -->
-        <Label text="Hạn mức đăng ký:" GridPane.columnIndex="0" GridPane.rowIndex="8" />
-        <TextField fx:id="txtHanMucDK" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <Label text="Hạn mức đăng ký:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <TextField fx:id="txtHanMucDK" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
         <!-- Số lượng đăng ký -->
-        <Label text="Số lượng đăng ký:" GridPane.columnIndex="0" GridPane.rowIndex="9" />
-        <TextField fx:id="txtSoLuongDK" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <Label text="Số lượng đăng ký:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <TextField fx:id="txtSoLuongDK" GridPane.columnIndex="1" GridPane.rowIndex="6" />
     </GridPane>
 
     <!-- Các nút hành động -->

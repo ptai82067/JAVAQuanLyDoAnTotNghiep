@@ -31,8 +31,6 @@
                 <Button fx:id="btnEdit" text="Sửa" />
                 <Button fx:id="btnDelete" text="Xóa" />
                 <Button fx:id="btnDetail" text="Xem chi tiết" />
-                <Button fx:id="btnDuyet" text="Duyệt" />
-                <Button fx:id="btnKhoa" text="Khóa" />
                 <Button fx:id="btnLamMoi" text="Làm mới" />
             </children>
         </HBox>
@@ -58,5 +56,7 @@
             <Button fx:id="btnLastPage" text="&gt;&gt;" />
         </HBox>
         <Label fx:id="lblPageInfo" layoutX="1094.0" layoutY="661.0" text="Label" />
+          <Button fx:id="btnKhoa" layoutX="471.0" layoutY="150.0" text="Khóa" />
+          <Button fx:id="btnDuyet" layoutX="399.0" layoutY="150.0" text="Duyệt" />
     </children>
 </Pane>

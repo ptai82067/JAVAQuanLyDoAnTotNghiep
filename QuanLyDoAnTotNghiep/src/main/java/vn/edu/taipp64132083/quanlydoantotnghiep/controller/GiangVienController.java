@@ -36,7 +36,7 @@ public class GiangVienController implements Initializable {
   @FXML
   private TableColumn<GiangVien, BoMon> boMon;
   @FXML
-  private Button btnAdd, btnEdit, btnDelete, btnDetail;
+  private Button btnAdd, btnEdit, btnDelete, btnDetail,btnLamMoi;
 
 
   @FXML
@@ -96,6 +96,7 @@ public class GiangVienController implements Initializable {
     btnEdit.setOnAction(this::handleEdit);
     btnDelete.setOnAction(this::handleDelete);
     btnDetail.setOnAction(this::handleDetail);
+    btnLamMoi.setOnAction(this::handleLamMoi);
     // Khởi tạo dịch vụ phân trang
     paginationService = new PaginationService<>(allGiangVien, 5);
 
@@ -109,6 +110,8 @@ public class GiangVienController implements Initializable {
     btnLastPage.setOnAction(event -> lastPage());
 
   }
+
+
 
   // Cập nhật dữ liệu trong TableView
   private void updateTableView() {
@@ -153,6 +156,24 @@ public class GiangVienController implements Initializable {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+  private void handleLamMoi(ActionEvent event) {
+    try {
+
+      allGiangVien.add(Service.refeshGiangVien());
+      giangVienTable.refresh();
+      updateTableView();
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      alert.setTitle("Làm Mới");
+      alert.setHeaderText("");
+      alert.setContentText("Làm mới thành công!");
+      // Hiển thị hộp thoại
+      alert.showAndWait();
+    }catch (Exception e){
+
+    }
+
+
   }
   @FXML
   private void handleEdit(ActionEvent event) {

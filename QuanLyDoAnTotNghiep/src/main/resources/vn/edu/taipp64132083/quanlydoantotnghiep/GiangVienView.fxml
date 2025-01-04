@@ -32,6 +32,7 @@
                 <Button fx:id="btnEdit" text="Sửa" />
                 <Button fx:id="btnDelete" text="Xóa" />
                 <Button fx:id="btnDetail" text="Xem chi tiết" />
+                <Button fx:id="btnLamMoi" text="Làm mới" />
             </children>
         </HBox>
         <TableView fx:id="giangVienTable" layoutX="20.0" layoutY="192.0" prefHeight="452.0" prefWidth="1165.0" stylesheets="@asset/fullpackstyling.css" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="192.0">
