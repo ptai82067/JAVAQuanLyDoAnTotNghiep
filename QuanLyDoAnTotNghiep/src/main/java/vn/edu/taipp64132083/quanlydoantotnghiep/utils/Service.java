@@ -3,10 +3,7 @@ package vn.edu.taipp64132083.quanlydoantotnghiep.utils;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import vn.edu.taipp64132083.quanlydoantotnghiep.dal.APIDataCache;
-import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.BoMon;
-import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.DoAn;
-import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.GiangVien;
-import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.SinhVien;
+import vn.edu.taipp64132083.quanlydoantotnghiep.model_dto.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +89,26 @@ public class Service {
       }
     }
     return giangVienList;
+  }
+
+  public static ObservableList<PhanCongDoAn> getPhanCongList() throws Exception {
+    // Kiểm tra nếu danh sách DoAn đã có trong cache
+    List<PhanCongDoAn> list = (List<PhanCongDoAn>)APIDataCache.getInstance()
+            .getListFromCache(PHANCONG_TABLE_NAME, PhanCongDoAn.class);
+    ObservableList<PhanCongDoAn> phanCongDoAns = FXCollections.observableArrayList(list);
+    if (phanCongDoAns == null || phanCongDoAns.isEmpty()) {
+      // Nếu không có trong cache, gọi API để lấy danh sách DoAn
+      System.out.println("Lấy danh sách PhanCong từ API...");
+      List<PhanCongDoAn> list1 = APIClient.get(PHANCONG_TABLE_NAME, PhanCongDoAn.class);
+      phanCongDoAns = FXCollections.observableArrayList(list1);
+      // Lưu vào cache sau khi nhận được dữ liệu
+      if (phanCongDoAns != null) {
+        for (PhanCongDoAn phanCongDoAn : phanCongDoAns) {
+          APIDataCache.getInstance().addInCache(PHANCONG_TABLE_NAME, phanCongDoAn);
+        }
+      }
+    }
+    return phanCongDoAns;
   }
 
   public static ObservableList<BoMon> getBoMon() throws Exception {
